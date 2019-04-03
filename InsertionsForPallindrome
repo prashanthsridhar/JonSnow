@@ -1,0 +1,30 @@
+n = int(input())                
+def reverse(s): 
+    if len(s) == 0: 
+        return s 
+    else: 
+        return reverse(s[1:]) + s[0]        
+li=[]
+clist=[]
+res=[]
+for i in range(0,n):
+    li.append(input())
+    
+for i in li:
+    single=0
+    clist=[]
+    for j in i:
+        
+        clist.append(i.count(j))
+    print(clist)
+    for ll in clist:
+        if(ll%2!=0):
+            single=single+1
+    if single>1:
+        res.append(single-1)
+    else:
+        res.append(0)
+        
+        
+for kk in res:
+    print(kk,end=" ")
