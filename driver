@@ -1,0 +1,14 @@
+
+var http=require('http')
+var mod=require('./auth')
+var res=mod.authenticateUser('admin','admin')
+var server=http.createServer(
+    function(request,response)
+    {
+        response.writeHead(200,{"Content-Type":"text/html"});
+        //response.write("<html><body><h2>Hello world server </h2></body></html>");
+        response.end("<http><body>"+res+"</body></html>");
+    }
+);
+server.listen(3000)
+console.log("starting server")
