@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl" ng-init="name()"> 
+
+
+txtName: 
+<input type="text" name="fname" ngmodel=fname>
+<button type="button">ADD</button>
+<button type="button">Search</button><br><br>
+<h4 id="grid1Label">
+  Employee Details
+</h4>
+<table role="grid"
+       aria-labelledby="grid1Label"
+       class="data">
+ <thead>
+<tr>
+    <th>id</th>
+    <th>email</th>
+    <th>FirstName</th>
+    <th>Lastname</th> 
+    <th>avatar</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr ng-repeat="x in myWelcome.data">
+    <td tabindex="-1">{{ x.id }}</td>
+    <td tabindex="-1">{{ x.email }}</td>
+    <td tabindex="-1">{{ x.first_name}}</td>
+    <td tabindex="-1">{{ x.last_name }}</td>
+    <td tabindex="-1"><img src="{{ x.avatar }}" alt="Smiley face" 		     height="42" width="42"></td>
+    
+  </tr>
+  </tbody>
+</table>
+
+</div>
+
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope, $http) {
+
+  $scope.name=function()
+  {
+  
+  $http.get("https://reqres.in/api/users?page=2")
+  .then(function(response)
+  {
+  
+      $scope.myWelcome = response.data;
+  });
+  }
+  $scope.name1=function()
+  {
+  	var i=0;
+    for(i=0;i<myWelcome.data.length;i++)
+    {
+    	if(myWelcome.data[i].first_name==fname || 	myWelcome.data[i].first_name==fname )
+        {
+        	
+        }
+    }
+  }
+  
+  
+});
+
+
+
+
+
+</script>
+
+</body>
+</html>
